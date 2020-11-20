@@ -1,0 +1,124 @@
+.menu {
+  background: #fb5;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+}
+.menu,
+.menu * {
+  box-sizing: border-box;
+}
+/* ==== */
+.menu .logo {
+  display: block;
+  padding: 10px;
+  max-height: 80px;
+  box-sizing: border-box;
+}
+.menu .logo img {
+  display: block;
+  max-width: 100%;
+}
+/* ==== */
+
+.menu ul {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  list-style: none;
+  margin: 0;
+}
+
+.menu li a {
+  display: block;
+  padding: 10px;
+  margin-right: 10px;
+  color: #222;
+  text-decoration: none;
+  font-family: monospace;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+}
+
+[data-menu='button'] {
+  display: none;
+}
+[data-menu='button'] {
+  display: none;
+}
+
+@keyframes show-right {
+  from {
+    opacity: 0;
+    transform: translate3d(-30px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (max-width: 700px) {
+  [data-menu='button'] {
+    display: flex;
+    background: #222;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-family: monospace;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    margin: 10px;
+    align-items: center;
+    position: relative;
+    z-index: 300;
+  }
+  [data-menu='button']::before {
+    content: '';
+    display: inline-block;
+    height: 2px;
+    width: 12px;
+    background: #fff;
+    box-shadow: 0 4px #fff, 0 -4px #fff;
+    margin-right: 4px;
+    transition: transform 0.3s;
+  }
+  [data-menu='button'].active::before {
+    transform: rotate(90deg);
+  }
+  .menu [data-menu='list'] {
+    display: none;
+    position: absolute;
+    background: #fb5;
+    /* width: 160px; */
+    width: 100%;
+    z-index: 200;
+    /* top: 0; */
+    top: 80px;
+    right: 0;
+    padding: 0px 0 20px 0;
+    box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2);
+    z-index: 250;
+  }
+
+  .menu [data-menu='list'].active {
+    display: block;
+    animation: show-right 0.3s forwards;
+  }
+
+  .menu .dropdown-menu {
+    position: static;
+    border: none;
+  }
+
+  .menu [data-dropdown] .dropdown-menu {
+    display: block;
+    animation: show-up 0.3s forwards;
+  }
+}
