@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu Mobile</title>
+    <link rel="stylesheet" href="dist/dropdown-menu.css" />
+    <link rel="stylesheet" href="dist/menu-mobile.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body class="js">
+    <nav class="menu" data-menu="suave">
+      <a class="logo">
+        <img src="./img/logo.png" alt="Bikcraft" />
+      </a>
+      <button data-menu="button" aria-expanded="false" aria-controls="menu">Menu</button>
+      <ul data-menu="list" id="menu">
+        <li><a href="#animais">Animais</a></li>
+        <li data-dropdown data-dropdown-hover>
+          <a href="#sobre.html">Sobre</a>
+          <ul class="dropdown-menu">
+            <li><a href="empresa.html">A empresa</a></li>
+            <li><a href="equipe.html">Equipe</a></li>
+            <li><a href="socios.html">Sócios</a></li>
+            <li><a href="investidores.html">Investidores</a></li>
+          </ul>
+        </li>
+        <li><a href="#faq">Faq</a></li>
+        <li><a href="#contato">Contato</a></li>
+        <li>
+          <a data-modal="abrir" href="login.html">Login</a>
+        </li>
+      </ul>
+    </nav>
+    <script src="./dist/dropdown-menu.js"></script>
+    <script src="./dist/menu-mobile.js"></script>
+    <script>
+      const dropdownMenu = new DropdownMenu('[data-dropdown]');
+      dropdownMenu.init();
+
+      const menuMobile = new MenuMobile('[data-menu="button"]', '[data-menu="list"]');
+      menuMobile.init();
+    </script>
+  </body>
+</html>
